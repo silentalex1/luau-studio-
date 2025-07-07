@@ -1,44 +1,78 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8" />
-  <title>Luau Dev Studio</title>
-  <link rel="stylesheet" href="tailwind.css" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
-  <header class="bg-gray-800 p-4 flex justify-between items-center">
-    <h1 class="text-2xl font-semibold">Luau Dev Studio</h1>
-  </header>
-  <main class="flex flex-1">
-    <div class="sidebar w-64 bg-gray-800 p-4 flex flex-col">
-      <h2 class="text-lg font-semibold mb-4">Scripts</h2>
-      <input id="searchInput" class="w-full p-2 mb-4 bg-gray-700 rounded-lg" placeholder="Search scripts..." />
-      <ul id="scriptList" class="flex-1 overflow-y-auto"></ul>
-      <input type="file" id="fileUpload" accept=".lua" class="hidden" />
-      <button id="uploadBtn" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg mt-4">Upload Script</button>
-      <button id="newScriptBtn" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg mt-2">New Script</button>
-    </div>
-    <div class="flex-1 flex flex-col">
-      <div class="header bg-gray-800 p-4 flex justify-between items-center">
-        <h2 id="scriptTitle" class="text-lg font-semibold">New Script</h2>
-        <select id="actionSelect" class="bg-gray-700 p-2 rounded-lg">
-          <option value="check">Check Errors</option>
-          <option value="improve">Improve Script</option>
-          <option value="humanize">Humanize Code</option>
-          <option value="history">View History</option>
-        </select>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Luau Dev Studio</title>
+    <link rel="stylesheet" href="tailwind.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col font-sans">
+    <header class="bg-gray-900 p-5 flex justify-between items-center shadow-lg">
+      <h1 class="text-3xl font-extrabold text-blue-400">Luau Dev Studio</h1>
+    </header>
+    <main class="flex flex-1 overflow-hidden">
+      <div class="sidebar w-80 bg-gray-900 p-6 flex flex-col shadow-xl overflow-y-auto">
+        <h2 class="text-xl font-bold mb-6 text-blue-300">Scripts</h2>
+        <input
+          id="searchInput"
+          class="w-full p-3 mb-5 bg-gray-800 rounded-lg text-gray-100 border border-gray-700 focus:border-blue-500 focus:outline-none transition duration-200"
+          placeholder="Search scripts..."
+        />
+        <ul id="scriptList" class="flex-1 overflow-y-auto space-y-2 pb-4"></ul>
+        <input type="file" id="fileUpload" accept=".lua" class="hidden" />
+        <button
+          id="uploadBtn"
+          class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold p-4 rounded-xl mt-6 shadow-md transition duration-200 transform hover:scale-105"
+        >
+          Upload Script
+        </button>
+        <button
+          id="newScriptBtn"
+          class="bg-purple-600 hover:bg-purple-700 text-white font-semibold p-4 rounded-xl mt-3 shadow-md transition duration-200 transform hover:scale-105"
+        >
+          New Script
+        </button>
       </div>
-      <div class="flex-1 p-4 flex">
-        <textarea id="codeInput" class="flex-1 bg-gray-700 p-4 rounded-lg resize-none" placeholder="Paste your Luau code here..."></textarea>
-        <div id="output" class="w-1/3 bg-gray-700 p-4 rounded-lg ml-4"></div>
+      <div class="flex-1 flex flex-col">
+        <div class="header bg-gray-900 p-5 flex justify-between items-center shadow-lg">
+          <h2 id="scriptTitle" class="text-2xl font-bold text-blue-300">New Script</h2>
+          <select
+            id="actionSelect"
+            class="bg-gray-800 p-3 rounded-lg text-gray-100 border border-gray-700 focus:border-blue-500 focus:outline-none transition duration-200 cursor-pointer"
+          >
+            <option value="check">Check Errors</option>
+            <option value="improve">Improve Script</option>
+            <option value="humanize">Humanize Code</option>
+            <option value="history">View History</option>
+          </select>
+        </div>
+        <div class="flex-1 p-6 flex gap-6 overflow-hidden">
+          <textarea
+            id="codeInput"
+            class="flex-1 bg-gray-800 p-6 rounded-xl resize-none text-lg leading-relaxed shadow-inner border border-gray-700 focus:border-blue-500 focus:outline-none transition duration-200"
+            placeholder="Paste your Luau code here..."
+          ></textarea>
+          <div
+            id="output"
+            class="w-1/3 bg-gray-800 p-6 rounded-xl text-lg leading-relaxed shadow-inner overflow-y-auto border border-gray-700"
+          ></div>
+        </div>
+        <div class="p-5 bg-gray-900 flex justify-end gap-4 shadow-lg">
+          <button
+            id="commitBtn"
+            class="bg-green-600 hover:bg-green-700 text-white font-semibold p-4 rounded-xl shadow-md transition duration-200 transform hover:scale-105"
+          >
+            Commit
+          </button>
+          <button
+            id="executeBtn"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold p-4 rounded-xl shadow-md transition duration-200 transform hover:scale-105"
+          >
+            Execute
+          </button>
+        </div>
       </div>
-      <div class="p-4 bg-gray-800 flex justify-end gap-2">
-        <button id="commitBtn" class="bg-green-600 hover:bg-green-700 text-white p-3 rounded-lg">Commit</button>
-        <button id="executeBtn" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg">Execute</button>
-      </div>
-    </div>
-  </main>
-  <script src="app.js"></script>
-</body>
+    </main>
+    <script src="app.js"></script>
+  </body>
 </html>
