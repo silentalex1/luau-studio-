@@ -1,5 +1,10 @@
 {
   "name": "luau-dev-studio",
   "version": "1.0.0",
-  "dependencies": {}
+  "dependencies": {
+    "tailwindcss": "^3.4.4"
+  },
+  "scripts": {
+    "build:css": "npx tailwindcss -i ./input.css -o ./public/tailwind.css --minify"
+  }
 }
