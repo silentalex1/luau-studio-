@@ -1,0 +1,15 @@
+body,html{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,sans-serif;}
+.sidebar{overflow-y:auto;}
+.sidebar h2{margin-bottom:15px;}
+.sidebar ul{list-style:none;padding:0;margin:0;}
+.sidebar li{padding:10px;cursor:pointer;border-radius:6px;}
+.sidebar li.active{background:#4a90e2;color:#fff;}
+.header{background:#222;padding:15px;}
+#scriptTitle{flex-grow:1;}
+#actionSelect{font-size:0.9em;}
+#codeInput,.output{font-size:0.95em;}
+#executeBtn{font-size:0.95em;}
+.tab{transition:background 0.2s;}
+.tab.active{background:#4a90e2;color:#fff;}
+.form input{transition:background 0.2s;}
+#authModal{z-index:1000;}
