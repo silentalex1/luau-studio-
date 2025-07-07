@@ -3,39 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <title>Luau Dev Studio</title>
+  <link rel="stylesheet" href="tailwind.css" />
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
   <header class="bg-gray-800 p-4 flex justify-between items-center">
     <h1 class="text-2xl font-semibold">Luau Dev Studio</h1>
-    <div>
-      <button id="loginBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg mr-2">Sign In</button>
-      <button id="signupBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">Sign Up</button>
-    </div>
   </header>
   <main class="flex flex-1">
-    <div id="authModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div class="bg-gray-800 p-6 rounded-lg w-96">
-        <div class="flex justify-between mb-4">
-          <button id="loginTab" class="tab flex-1 py-2 bg-gray-700 rounded-tl-lg text-center font-semibold">Sign In</button>
-          <button id="signupTab" class="tab flex-1 py-2 bg-gray-600 rounded-tr-lg text-center font-semibold">Sign Up</button>
-        </div>
-        <div id="loginForm" class="form">
-          <input id="loginUsername" class="w-full p-3 mb-3 bg-gray-700 rounded-lg text-gray-100 placeholder-gray-400" placeholder="Username" />
-          <input id="loginPassword" type="password" class="w-full p-3 mb-3 bg-gray-700 rounded-lg text-gray-100 placeholder-gray-400" placeholder="Password" />
-          <p id="loginError" class="text-red-500 text-sm mb-3 hidden"></p>
-          <button id="submitLogin" class="w-full p-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white">Sign In</button>
-        </div>
-        <div id="signupForm" class="form hidden">
-          <input id="signupUsername" class="w-full p-3 mb-3 bg-gray-700 rounded-lg text-gray-100 placeholder-gray-400" placeholder="Username" />
-          <input id="signupPassword" type="password" class="w-full p-3 mb-3 bg-gray-700 rounded-lg text-gray-100 placeholder-gray-400" placeholder="Password" />
-          <input id="confirmPassword" type="password" class="w-full p-3 mb-3 bg-gray-700 rounded-lg text-gray-100 placeholder-gray-400" placeholder="Confirm Password" />
-          <p id="signupError" class="text-red-500 text-sm mb-3 hidden"></p>
-          <button id="submitSignup" class="w-full p-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white">Sign Up</button>
-        </div>
-      </div>
-    </div>
     <div class="sidebar w-64 bg-gray-800 p-4 flex flex-col">
       <h2 class="text-lg font-semibold mb-4">Scripts</h2>
       <input id="searchInput" class="w-full p-2 mb-4 bg-gray-700 rounded-lg" placeholder="Search scripts..." />
@@ -43,7 +18,6 @@
       <input type="file" id="fileUpload" accept=".lua" class="hidden" />
       <button id="uploadBtn" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg mt-4">Upload Script</button>
       <button id="newScriptBtn" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg mt-2">New Script</button>
-      <button id="logoutBtn" class="bg-red-600 hover:bg-red-700 text-white p-3 rounded-lg mt-2">Sign Out</button>
     </div>
     <div class="flex-1 flex flex-col">
       <div class="header bg-gray-800 p-4 flex justify-between items-center">
