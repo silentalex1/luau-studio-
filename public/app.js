@@ -9,6 +9,7 @@ const newScriptBtn = document.getElementById('newScriptBtn')
 const uploadBtn = document.getElementById('uploadBtn')
 const fileUpload = document.getElementById('fileUpload')
 const searchInput = document.getElementById('searchInput')
+const toggleThemeBtn = document.getElementById('toggleThemeBtn')
 let scripts = JSON.parse(localStorage.getItem('luauDevScripts') || '[]')
 let currentScriptId = null
 function saveScripts() { localStorage.setItem('luauDevScripts', JSON.stringify(scripts)) }
@@ -79,6 +80,12 @@ function commitScript() {
   scripts[currentScriptId].history.push({id: scripts[currentScriptId].history.length + 1, code, timestamp: new Date().toISOString()})
   saveScripts()
   outputEl.textContent = 'Script committed'
+}
+toggleThemeBtn.onclick = () => {
+  const body = document.body
+  const isDark = body.getAttribute('data-theme') === 'dark'
+  body.setAttribute('data-theme', isDark ? 'light' : 'dark')
+  toggleThemeBtn.textContent = isDark ? 'Dark Mode' : 'Light Mode'
 }
 executeBtn.onclick = executeAction
 commitBtn.onclick = commitScript
