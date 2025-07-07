@@ -1,0 +1,19 @@
+body,html{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,sans-serif;}
+body[data-theme="light"]{background:#f3f4f6;color:#1f2937;}
+body[data-theme="light"] .bg-gray-900{background:#f3f4f6;}
+body[data-theme="light"] .bg-gray-800{background:#e5e7eb;}
+body[data-theme="light"] .text-gray-100{color:#1f2937;}
+body[data-theme="light"] .bg-gray-700{background:#d1d5db;}
+body[data-theme="light"] .border-gray-700{border-color:#9ca3af;}
+body[data-theme="light"] .placeholder-gray-400::placeholder{color:#6b7280;}
+.sidebar{overflow-y:auto;}
+.sidebar h2{margin-bottom:15px;}
+.sidebar ul{list-style:none;padding:0;margin:0;}
+.sidebar li{padding:10px;cursor:pointer;border-radius:6px;}
+.sidebar li.active{background:#4a90e2;color:#fff;}
+.header{background:#222;padding:15px;}
+#scriptTitle{flex-grow:1;}
+#actionSelect{font-size:0.9em;}
+#codeInput,.output{font-size:0.95em;}
+#executeBtn,#commitBtn,#uploadBtn{font-size:0.95em;}
+#searchInput{font-size:0.9em;}
