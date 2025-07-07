@@ -7,7 +7,7 @@ body,html{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,sans-s
 .header{background:#222;padding:15px;}
 #scriptTitle{flex-grow:1;}
 #actionSelect{font-size:0.9em;}
-#code03-26-2025 02:04:48 PMcodeInput,.output{font-size:0.95em;}
+#codeInput,.output{font-size:0.95em;}
 #executeBtn,#commitBtn,#uploadBtn{font-size:0.95em;}
 .tab{transition:background 0.2s;}
 .tab.active{background:#4a90e2;color:#fff;}
@@ -15,3 +15,4 @@ body,html{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,sans-s
 #authModal{z-index:1000;}
 #searchInput{font-size:0.9em;}
 #loginError,#signupError{transition:opacity 0.2s;}
+.form input:focus{outline:none;border:1px solid #4a90e2;}
