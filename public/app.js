@@ -1,4 +1,3 @@
-if (!localStorage.getItem('luauDevUser')) showAuthModal(true)
 const scriptListEl = document.getElementById('scriptList')
 const codeInput = document.getElementById('codeInput')
 const outputEl = document.getElementById('output')
@@ -10,33 +9,8 @@ const newScriptBtn = document.getElementById('newScriptBtn')
 const uploadBtn = document.getElementById('uploadBtn')
 const fileUpload = document.getElementById('fileUpload')
 const searchInput = document.getElementById('searchInput')
-const logoutBtn = document.getElementById('logoutBtn')
-const loginBtn = document.getElementById('loginBtn')
-const signupBtn = document.getElementById('signupBtn')
-const loginTab = document.getElementById('loginTab')
-const signupTab = document.getElementById('signupTab')
-const loginForm = document.getElementById('loginForm')
-const signupForm = document.getElementById('signupForm')
-const submitLogin = document.getElementById('submitLogin')
-const submitSignup = document.getElementById('submitSignup')
-const loginError = document.getElementById('loginError')
-const signupError = document.getElementById('signupError')
 let scripts = JSON.parse(localStorage.getItem('luauDevScripts') || '[]')
 let currentScriptId = null
-function showAuthModal(show) {
-  document.getElementById('authModal').classList.toggle('hidden', !show)
-  loginForm.classList.toggle('hidden', show && signupTab.classList.contains('active'))
-  signupForm.classList.toggle('hidden', show && loginTab.classList.contains('active'))
-  loginTab.classList.toggle('active', show && !signupTab.classList.contains('active'))
-  signupTab.classList.toggle('active', false)
-  loginError.classList.add('hidden')
-  signupError.classList.add('hidden')
-  document.getElementById('loginUsername').value = ''
-  document.getElementById('loginPassword').value = ''
-  document.getElementById('signupUsername').value = ''
-  document.getElementById('signupPassword').value = ''
-  document.getElementById('confirmPassword').value = ''
-}
 function saveScripts() { localStorage.setItem('luauDevScripts', JSON.stringify(scripts)) }
 function renderScriptList(filter = '') {
   scriptListEl.innerHTML = ''
@@ -106,78 +80,6 @@ function commitScript() {
   saveScripts()
   outputEl.textContent = 'Script committed'
 }
-loginBtn.onclick = () => showAuthModal(true)
-signupBtn.onclick = () => showAuthModal(true)
-loginTab.onclick = () => {
-  loginTab.classList.add('active')
-  signupTab.classList.remove('active')
-  loginForm.classList.remove('hidden')
-  signupForm.classList.add('hidden')
-  loginError.classList.add('hidden')
-  signupError.classList.add('hidden')
-}
-signupTab.onclick = () => {
-  signupTab.classList.add('active')
-  loginTab.classList.remove('active')
-  signupForm.classList.remove('hidden')
-  loginForm.classList.add('hidden')
-  loginError.classList.add('hidden')
-  signupError.classList.add('hidden')
-}
-submitLogin.onclick = () => {
-  const user = document.getElementById('loginUsername').value.trim()
-  const pass = document.getElementById('loginPassword').value
-  if (!user || !pass) {
-    loginError.textContent = 'Please fill in all fields'
-    loginError.classList.remove('hidden')
-    return
-  }
-  const users = JSON.parse(localStorage.getItem('luauDevUsers') || '{}')
-  if (users[user] && users[user].password === pass) {
-    localStorage.setItem('luauDevUser', user)
-    showAuthModal(false)
-    renderScriptList()
-  } else {
-    loginError.textContent = 'Invalid username or password'
-    loginError.classList.remove('hidden')
-  }
-}
-submitSignup.onclick = () => {
-  const user = document.getElementById('signupUsername').value.trim()
-  const pass = document.getElementById('signupPassword').value
-  const confirm = document.getElementById('confirmPassword').value
-  if (!user || !pass || !confirm) {
-    signupError.textContent = 'Please fill in all fields'
-    signupError.classList.remove('hidden')
-    return
-  }
-  if (pass !== confirm) {
-    signupError.textContent = 'Passwords do not match'
-    signupError.classList.remove('hidden')
-    return
-  }
-  if (user.length < 3) {
-    signupError.textContent = 'Username must be at least 3 characters'
-    signupError.classList.remove('hidden')
-    return
-  }
-  if (pass.length < 6) {
-    signupError.textContent = 'Password must be at least 6 characters'
-    signupError.classList.remove('hidden')
-    return
-  }
-  const users = JSON.parse(localStorage.getItem('luauDevUsers') || '{}')
-  if (users[user]) {
-    signupError.textContent = 'Username already exists'
-    signupError.classList.remove('hidden')
-    return
-  }
-  users[user] = { password: pass }
-  localStorage.setItem('luauDevUsers', JSON.stringify(users))
-  localStorage.setItem('luauDevUser', user)
-  showAuthModal(false)
-  renderScriptList()
-}
 executeBtn.onclick = executeAction
 commitBtn.onclick = commitScript
 codeInput.onkeydown = e => { if (e.key === 'Enter' && e.ctrlKey) executeAction() }
@@ -208,9 +110,5 @@ fileUpload.onchange = e => {
   reader.readAsText(file)
 }
 searchInput.oninput = () => renderScriptList(searchInput.value.trim())
-logoutBtn.onclick = () => {
-  localStorage.removeItem('luauDevUser')
-  showAuthModal(true)
-}
 renderScriptList()
 renderScript()
