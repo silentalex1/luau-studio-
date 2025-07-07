@@ -18,21 +18,21 @@
     <div id="authModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
       <div class="bg-gray-800 p-6 rounded-lg w-96">
         <div class="flex justify-between mb-4">
-          <button id="loginTab" class="tab flex-1 py-2 bg-gray-700 rounded-tl-lg text-center">Sign In</button>
-          <button id="signupTab" class="tab flex-1 py-2 bg-gray-600 rounded-tr-lg text-center">Sign Up</button>
+          <button id="loginTab" class="tab flex-1 py-2 bg-gray-700 rounded-tl-lg text-center font-semibold">Sign In</button>
+          <button id="signupTab" class="tab flex-1 py-2 bg-gray-600 rounded-tr-lg text-center font-semibold">Sign Up</button>
         </div>
         <div id="loginForm" class="form">
-          <input id="loginUsername" class="w-full p-3 mb-3 bg-gray-700 rounded-lg" placeholder="Username" />
-          <input id="loginPassword" type="password" class="w-full p-3 mb-3 bg-gray-700 rounded-lg" placeholder="Password" />
+          <input id="loginUsername" class="w-full p-3 mb-3 bg-gray-700 rounded-lg text-gray-100 placeholder-gray-400" placeholder="Username" />
+          <input id="loginPassword" type="password" class="w-full p-3 mb-3 bg-gray-700 rounded-lg text-gray-100 placeholder-gray-400" placeholder="Password" />
           <p id="loginError" class="text-red-500 text-sm mb-3 hidden"></p>
-          <button id="submitLogin" class="w-full p-3 bg-blue-600 hover:bg-blue-700 rounded-lg">Sign In</button>
+          <button id="submitLogin" class="w-full p-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white">Sign In</button>
         </div>
         <div id="signupForm" class="form hidden">
-          <input id="signupUsername" class="w-full p-3 mb-3 bg-gray-700 rounded-lg" placeholder="Username" />
-          <input id="signupPassword" type="password" class="w-full p-3 mb-3 bg-gray-700 rounded-lg" placeholder="Password" />
-          <input id="confirmPassword" type="password" class="w-full p-3 mb-3 bg-gray-700 rounded-lg" placeholder="Confirm Password" />
+          <input id="signupUsername" class="w-full p-3 mb-3 bg-gray-700 rounded-lg text-gray-100 placeholder-gray-400" placeholder="Username" />
+          <input id="signupPassword" type="password" class="w-full p-3 mb-3 bg-gray-700 rounded-lg text-gray-100 placeholder-gray-400" placeholder="Password" />
+          <input id="confirmPassword" type="password" class="w-full p-3 mb-3 bg-gray-700 rounded-lg text-gray-100 placeholder-gray-400" placeholder="Confirm Password" />
           <p id="signupError" class="text-red-500 text-sm mb-3 hidden"></p>
-          <button id="submitSignup" class="w-full p-3 bg-blue-600 hover:bg-blue-700 rounded-lg">Sign Up</button>
+          <button id="submitSignup" class="w-full p-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white">Sign Up</button>
         </div>
       </div>
     </div>
