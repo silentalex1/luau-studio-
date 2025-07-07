@@ -25,11 +25,10 @@ let scripts = JSON.parse(localStorage.getItem('luauDevScripts') || '[]')
 let currentScriptId = null
 function showAuthModal(show) {
   document.getElementById('authModal').classList.toggle('hidden', !show)
-  loginForm.classList.add('hidden')
-  signupForm.classList.add('hidden')
-  loginTab.classList.add('active')
-  signupTab.classList.remove('active')
-  loginForm.classList.remove('hidden')
+  loginForm.classList.toggle('hidden', show && signupTab.classList.contains('active'))
+  signupForm.classList.toggle('hidden', show && loginTab.classList.contains('active'))
+  loginTab.classList.toggle('active', show && !signupTab.classList.contains('active'))
+  signupTab.classList.toggle('active', false)
   loginError.classList.add('hidden')
   signupError.classList.add('hidden')
   document.getElementById('loginUsername').value = ''
@@ -115,12 +114,14 @@ loginTab.onclick = () => {
   loginForm.classList.remove('hidden')
   signupForm.classList.add('hidden')
   loginError.classList.add('hidden')
+  signupError.classList.add('hidden')
 }
 signupTab.onclick = () => {
   signupTab.classList.add('active')
   loginTab.classList.remove('active')
   signupForm.classList.remove('hidden')
   loginForm.classList.add('hidden')
+  loginError.classList.add('hidden')
   signupError.classList.add('hidden')
 }
 submitLogin.onclick = () => {
@@ -152,6 +153,16 @@ submitSignup.onclick = () => {
   }
   if (pass !== confirm) {
     signupError.textContent = 'Passwords do not match'
+    signupError.classList.remove('hidden')
+    return
+  }
+  if (user.length < 3) {
+    signupError.textContent = 'Username must be at least 3 characters'
+    signupError.classList.remove('hidden')
+    return
+  }
+  if (pass.length < 6) {
+    signupError.textContent = 'Password must be at least 6 characters'
     signupError.classList.remove('hidden')
     return
   }
