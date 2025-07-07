@@ -39,6 +39,28 @@ module.exports = async (req, res) => {
       res.status(200).json({ result: improved || 'No improvements needed' })
       return
     }
+    if (action === 'humanize') {
+      const comments = [
+        '-- Setting up variables',
+        '-- Core logic here',
+        '-- Helper function',
+        '-- Loop for processing',
+        '-- Quick check'
+      ]
+      let lines = code.split('\n')
+      let humanized = []
+      lines.forEach((line, i) => {
+        if (line.trim() && Math.random() > 0.7) {
+          humanized.push(`${' '.repeat(Math.floor(Math.random() * 4))}${comments[Math.floor(Math.random() * comments.length)]}`)
+        }
+        humanized.push(`${' '.repeat(Math.floor(Math.random() * 2))}${line}`)
+        if (line.trim() && Math.random() > 0.8) {
+          humanized.push('')
+        }
+      })
+      res.status(200).json({ result: humanized.join('\n') || 'No changes made' })
+      return
+    }
     res.status(400).json({ error: 'Invalid action' })
   } catch {
     res.status(500).json({ error: 'Internal error' })
